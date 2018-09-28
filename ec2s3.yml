@@ -1,0 +1,14 @@
+--- # S3
+
+- hosts: local
+  connection: local
+  remote_user: centos
+  become: yes
+  tasks:
+  - name: s3
+    aws_s3:
+      bucket: am4la1
+      mode: delete
+      permission: public-read-write
+    register: bucket
+  - debug: var=bucket       

@@ -1,0 +1,12 @@
+--- # ls playbook
+
+- hosts: all
+  remote_user: centos
+  become: yes
+  
+  tasks:
+  - name: ls
+    shell: 'ls -al ~'
+    register: list
+  
+  - debug: var=list

@@ -1,0 +1,16 @@
+--- # EC2 New Key
+
+- hosts: aws
+  remote_user: centos
+  become: yes
+  vars_files:
+  - awscreds.yml
+  
+  tasks:
+  - name: ec2key new
+    ec2_key:
+      aws_access_key: "{{ aws_id }}"
+      aws_secret_key: "{{ aws_key }}"
+      name: TestKey1
+      region: eu-central-1
+      state: absent

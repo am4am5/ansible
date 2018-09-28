@@ -1,0 +1,21 @@
+--- # EC2 New Sec Group
+
+- hosts: local
+  connection: local
+  remote_user: centos
+  become: yes
+  tasks:
+  - name: ec2 new sec group
+    ec2_group:
+      name: SG1
+      description: ansible SG1
+      vpc_id: vpc-3570395e
+      rules:
+        - proto: tcp
+          ports: 80
+          cidr_ip: 0.0.0.0/0
+      rules_egress:
+        - proto: all
+          ports: 0
+          cidr_ip: 0.0.0.0/0
+             

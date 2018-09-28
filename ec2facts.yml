@@ -1,0 +1,12 @@
+--- # EC2 Facts playbook
+
+- hosts: aws
+  remote_user: centos
+  become: yes
+  
+  tasks:
+  - name: ec2fact
+    ec2_metadata_facts: 
+    register: facts
+  - name: Display facts
+    debug: var=facts

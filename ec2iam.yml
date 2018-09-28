@@ -1,0 +1,20 @@
+--- # New IAM Users
+
+- hosts: local
+  connection: local
+  remote_user: centos
+  become: yes
+  tasks:
+  - name: iam
+    iam:
+      iam_type: user
+      state: present
+      password: "P4$$word"
+      access_key_state: create
+      name: "{{ item }}"
+    with_items:
+    - temp1
+    - temp2
+    - temp3        
+    register: iam
+  - debug: var=iam       

@@ -1,0 +1,11 @@
+--- # EC2 Instance Facts
+
+- hosts: local
+  connection: local
+  remote_user: centos
+  become: yes
+  tasks:
+  - name: ec2 instance facts
+    ec2_instance_facts:
+    register: rfacts
+  - debug: var=rfacts       

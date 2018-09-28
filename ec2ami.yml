@@ -1,0 +1,14 @@
+--- # EC2 New AMI
+
+- hosts: local
+  connection: local
+  remote_user: centos
+  become: yes
+  tasks:
+  - name: ec2ami new
+    ec2_ami:
+      instance_id: i-053bc4450e7bb88f9
+      wait: no
+      name: centos75-20180925
+    register: instance
+       
