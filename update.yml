@@ -1,0 +1,11 @@
+--- # dnf update
+- hosts: all
+  remote_user: am4
+  become: yes
+  gather_facts: no
+
+  tasks:
+  - name: dnf update
+    dnf:
+      name: "*"
+      state: latest
