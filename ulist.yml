@@ -6,6 +6,6 @@
   
   tasks:
   - name: list updated
-    shell: "dnf history info | grep Upgrade | awk '{print $2}'"
+    shell: "dnf history info | awk '{print $2}'"
     register: up
   - debug: msg="{{up.stdout_lines}}"
